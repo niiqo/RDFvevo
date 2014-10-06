@@ -1,5 +1,5 @@
 """
-Django settings for redfvevo project.
+Django settings for rdfvevo project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'asistencia',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,9 +48,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'redfvevo.urls'
+ROOT_URLCONF = 'rdfvevo.urls'
 
-WSGI_APPLICATION = 'redfvevo.wsgi.application'
+WSGI_APPLICATION = 'rdfvevo.wsgi.application'
 
 
 # Database
@@ -57,17 +58,21 @@ WSGI_APPLICATION = 'redfvevo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rdfvevo',
+        'USER': 'rdfvevo',
+        'PASSWORD': 'vevo',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ar'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -80,3 +85,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+TEMPLATE_DIRS = '/templates/'

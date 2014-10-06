@@ -1,5 +1,5 @@
 """
-WSGI config for redfvevo project.
+WSGI config for rdfvevo project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "redfvevo.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rdfvevo.settings")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
