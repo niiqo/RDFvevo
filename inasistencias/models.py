@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Clase curso
 class Curso():
@@ -59,3 +60,30 @@ class Curso():
         diasDeClase = self.getDiasDeClase()
         porcentajeDeAsistencia = (asistencias / (alumnos * diasDeClase))
         return porcentajeDeAsistencia
+
+class Preceptor(models.Model):
+    preceptor = models.ManyToManyField(User)#, unique=True)
+    
+    # nombre de usuario
+    #usuario = models.CharField('titulo', max_length=40)
+    # contrasena
+    #contra = models.CharField(u'contraseña', max_length=40)
+    # cursos asignados
+    cursos_a_cargo = models.ManyToManyField(Curso)
+
+    class Meta:
+        #ordering = ['usuario']
+#        app_label = 'preceptores'
+        verbose_name_plural = 'preceptores'
+
+    # Similar a __str__, devuelve una descripcion mas amigable
+    def __unicode__(self):
+        return ""
+
+    def tomar_asistencia(self):
+        
+        return ""
+
+    def observar(self, alumno, descripcion):
+        self.observacion_set.create(descripcion=descripcion)
+        return descripcion
