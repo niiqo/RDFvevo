@@ -87,6 +87,7 @@ class Preceptor(models.Model):
     def observar(self, alumno, descripcion):
         self.observacion_set.create(descripcion=descripcion)
         return descripcion
+<<<<<<< HEAD
 
 
 class Observacion (models.Model):
@@ -99,3 +100,5 @@ class Inasistencia (models.models):
     justificado = models.BooleanField()
     fecha_de_inasistencia = models.DateField(required=True)
     
+=======
+>>>>>>> e85a003c9aa8a48514fafd277594c307f59ab3fd
