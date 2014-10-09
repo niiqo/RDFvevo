@@ -99,6 +99,7 @@ class Inasistencia (models.models):
     tipo = models.FloatField()
     justificado = models.BooleanField()
     fecha_de_inasistencia = models.DateField(required=True)
+<<<<<<< HEAD
 
 class administrador (models.models)
     usuario = models.CharField('titulo', max_length=40)
@@ -106,3 +107,6 @@ class administrador (models.models)
 	    
 =======
 
+=======
+    
+>>>>>>> 359699c5f749187ef166e9250a066ef7d6cc0bec
