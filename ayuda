@@ -1,0 +1,18 @@
+Alumno:
+    ForeignKey(Curso)
+
+Preceptor:
+    ManyToMany(Curso)
+
+Curso:
+
+Observacion:
+    ForeignKey(Alumno)
+    ForeignKey(Preceptor)
+
+Inasistencia:
+    ForeignKey(Alumno)
+    ForeignKey(Preceptor)
+
+
+
