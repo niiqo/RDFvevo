@@ -1,12 +1,23 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
-from inasistencias.models import Preceptor, Curso
+from django import forms
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.forms import UserCreationForm
+from inasistencias.models import Preceptor, Curso, Observacion, Inasistencia, Alumno
 
 
-#class PreceptorAdmin(admin.ModelAdmin):
-    # Informacion que se muestra en la lista
-    #list_display = ('username', 'password')
-    # Busqueda por titulo
-    #search_fields = ['username']
+class UserForm (UserCreationForm):
+    class Meta:
+	model = User
+	fields = ('first_name', 'last_name', 'email', 'username')
 
-admin.site.register(Preceptor)#, PreceptorAdmin)
+class UserAdmin(admin.ModelAdmin):
+    form = UserForm
+    
+    
+admin.site.register(Observacion)
+admin.site.register(Inasistencia)
+admin.site.register(Preceptor, UserAdmin)
+admin.site.register(Alumno, UserAdmin)
 admin.site.register(Curso)
