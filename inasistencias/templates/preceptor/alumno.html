@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+	<div class="col-lg-12">
+	    <h1 class="page-header">{{ alumno }}</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+	<div class="col-lg-3 col-md-6">
+	    <div class="panel panel-primary">
+		<div class="panel-heading">
+		    <div class="row">
+			<div class="col-xs-3">
+			    <i class=""></i>
+			</div>
+			<div class="col-xs-9 text-right">
+			    <div class="huge">{{ alumno.faltas }}</div>
+			    <div>Faltas</div>
+			</div>
+		    </div>
+		</div>
+		<a href="#faltas">
+		    <div class="panel-footer">
+			<span class="pull-left">Ver o Agregar</span>
+			<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+			<div class="clearfix"></div>
+		    </div>
+		</a>
+	    </div>
+	</div>
+	<div class="col-lg-3 col-md-6">
+	    <div class="panel panel-green">
+		<div class="panel-heading">
+		    <div class="row">
+			<div class="col-xs-3">
+			    <i class=""></i>
+			</div>
+			<div class="col-xs-9 text-right">
+			    <div class="huge">{{ alumno.reincorporacion }}</div>
+			    <div>Reincorporaciones</div>
+			</div>
+		    </div>
+		</div>
+		<a href="#faltas">
+		    <div class="panel-footer">
+			<span class="pull-left">Ver o Agregar</span>
+			<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+			<div class="clearfix"></div>
+		    </div>
+		</a>
+	    </div>
+	</div>
+	<div class="col-lg-3 col-md-6">
+	    <div class="panel panel-yellow">
+		<div class="panel-heading">
+		    <div class="row">
+			<div class="col-xs-3">
+			    <i class=""></i>
+			</div>
+			<div class="col-xs-9 text-right">
+			    <div class="huge">{{ alumno.observaciones }}</div>
+			    <div>Observaciones</div>
+			</div>
+		    </div>
+		</div>
+		<a href="#observaciones">
+		    <div class="panel-footer">
+			<span class="pull-left">Agregar y/o ver</span>
+			<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+			<div class="clearfix"></div>
+		    </div>
+		</a>
+	    </div>
+	</div>
+	<div class="col-lg-3 col-md-6">
+	    <div class="panel panel-red">
+		<div class="panel-heading">
+		    <div class="row">
+			<div class="col-xs-3">
+			    <i class=""></i>
+			</div>
+			<div class="col-xs-9 text-right">
+			    <div class="huge">{{ alumno.amonestaciones }}</div>
+			    <div>Amonestaciones</div>
+			</div>
+		    </div>
+		</div>
+		<a href="#amonestaciones">
+		    <div class="panel-footer">
+			<span class="pull-left">Agregar y/o ver</span>
+			<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+			<div class="clearfix"></div>
+		    </div>
+		</a>
+	    </div>
+	</div>
+
+    </div>
+    <div class="panel panel-default">
+	<div class="panel-heading">
+	    Acciones
+	</div>
+	    <div class="panel-body">
+		<div class="row">
+		    <div class="col-lg-6">
+			<section id="faltas">
+			<h3> Lista de inasistencias</h3>
+			    <form role="form" action="guardarFaltas">
+				<div class="form-group">
+				    <p><label>Fecha Inasistencia (cant)</label>
+				    <label class="radio-inline">
+					<input type="radio" name="falta1" id="jus" value="jus">Justificada
+				    </label>
+				    <label class="radio-inline">
+					<input type="radio" name="falta1" id="injus" value="injus">Injustificada
+				    </label></p>
+                    <p> El alumno posee hasta la fecha, <b>{{ alumno.faltas }}</b> faltas aplicadas, de las cuales <b>{{ alumno.justificadas }}</b> han sido justificadas</p>
+				    <button type="submit" class="btn btn-default">Guardar</button>
+				</div>
+			    </form>
+			</section>
+
+			<section id="reincorporaciones">
+                <h3> Reincorporaciones </h3>
+                <p> El alumno, ha sido reincorporado <b>{{ alumno.reincorporaciones }}</b> veces.</p>
+			    <form action="reincoprporar">
+                    <button type="submit" class="btn btn-default">Reincorporar</button>
+                </form>
+            </section>
+		    </div>
+
+		    <div class="col-lg-6">
+			<section id="observaciones">
+			    <h3> Lista de Obsevaciones</h3>
+				<p><label> Fecha: </label></br>
+				    <label>Motivo: </label> 
+				</p>
+				    <form action="agregarObservacion">
+					<label>Agregar Observacion: </label></br>
+					    <label>Fecha</label>
+            				<div class="form-group has-success"><input class="form-control" id="fecha2" name="fechaObservacion" value="{% now 'SHORT_DATE_FORMAT' %}" required></div>
+					        <label> Motivo</label>
+            				<div class="form-group has-error"><input class="form-control" name="motivoObservacion" required></div>
+					<button type="submit" class="btn btn-default">Guardar</button>
+				    </form>
+			</section>
+
+			<section id="amonestaciones">
+			<h3> Lista de Amonestaciones</h3>
+				<p><label> Fecha: </label></br>
+				    <label> Cantidad: </label></br>
+				    <label>Motivo: </label> 
+				</p>
+				<form action="agregarAmonestacion">
+				    <label>Agregar Observacion: </label></br>
+					<label>Fecha</label>
+        				<div class="form-group has-success"><input class="form-control" id="fecha3" name="fechaAmonestacion" value="{% now 'SHORT_DATE_FORMAT' %}" required></div>
+				    <label> Cantidad</label>
+        				<div class="form-group has-warning"><input class="form-control" name="cantAmonestacion" required></div>
+				    <label> Motivo</label>
+        				<div class="form-group has-error"><input class="form-control" name="motivoAmonestacion" required></div>
+				    <button type="submit" class="btn btn-default">Guardar</button>
+				</form>
+            </section>
+            </div>
+            
+		</div>
+		<!-- /.panel-footer -->
+	    </div>
+	    <!-- /.panel .chat-panel -->
+	</div>
+	<!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}

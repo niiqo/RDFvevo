@@ -1,0 +1,14 @@
+Alumno:
+  - Vista
+  - Ver informacion del alumno
+
+Preceptor:
+  - Estadisticas de curso
+  - Agregar observacion, amonestacion, falta y reincorporacion
+  
+Admin:
+  - Estadisticas de curso
+  - Informacion de alumno
+  - Cargar alumnos y cursos
+  - Agregar preceptor
+  
